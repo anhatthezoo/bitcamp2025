@@ -1,23 +1,22 @@
 import { Recipe, Parser, getImageURL } from '@cooklang/cooklang-ts';
-import { database } from '../firebase.ts'
-import { get } from 'firebase/database'
 
-const cooklangFile = ref(database, FILE_PATH);
-onValue(cooklangFile, ())
+export function parsingCook(query){
+   //extract all fields from recipe
+   const resippy = new Recipe(query);
+   const parserRes = new Parser().parse(source);
+   const cookware = parserRes.cookwares;
+   const ingredients = parserRes.ingredients;
+   const metadata = parserRes.metadata;
+   const shoppingList = parserRes.shoppingList;
+   const steps = parserRes.steps;
 
-/*
-function parsingCook({query}){
-   
-   //source should be query from database
-   const source;
+   return {
+      cookware: cookware,
+      ingredients: ingredients,
+      metadata: metadata,
+      shoppingList: shoppingList,
+      steps: steps
+   }
+}
 
-   //console.log(new Recipe(source));
 
-
-   console.log(new Parser().parse(source).metadata);
-
-   console.log(getImageURL('Mixed Berry Smoothie', {
-       step: 1,
-       extension: 'png'
-   }));
-}*/
