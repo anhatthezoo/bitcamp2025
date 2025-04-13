@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, initializeAuth, getReactNativePersistence } from "firebase/auth"
+import { getFirestore } from "firebase/firestore"
 
 // Optionally import the services that you want to use
 // import {...} from 'firebase/auth';
@@ -9,17 +11,19 @@ import { initializeApp } from "firebase/app";
 
 // Initialize Firebase
 const firebaseConfig = {
-    apiKey: process.env.EXPO_PUBLIC_API_KEY,
-    authDomain: process.env.EXPO_PUBLIC_AUTH_DOMAIN,
-    projectId: process.env.EXPO_PUBLIC_PROJECT_ID,
-    storageBucket: process.env.EXPO_PUBLIC_STORAGE_BUCKET,
-    messagingSenderId: process.env.EXPO_PUBLIC_SENDER_ID,
-    appId: process.env.EXPO_PUBLIC_APP_ID,
-    measurementId: process.env.EXPO_PUBLIC_MEASURE_ID,
+    apiKey: "AIzaSyCqw93dtoSVlC13i0QJt3eg1nmQqDNSe_o",
+    authDomain: "bitcamp-2025-c0a5b.firebaseapp.com",
+    projectId: "bitcamp-2025-c0a5b",
+    storageBucket: "bitcamp-2025-c0a5b.firebasestorage.app",
+    messagingSenderId: "829181917700",
+    appId: "1:829181917700:web:aaa8ae468aa79a39b35351",
+    measurementId: "G-W3RF4LCBL3",
 };
 
 export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const firestore = getFirestore(app)
 
-console.log(app);
+console.log("Firebase loaded");
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
