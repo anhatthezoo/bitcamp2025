@@ -15,6 +15,12 @@ export default function TabLayout() {
                     title: "Cart",
                 }}
             />
+            <Tabs.Screen
+                name="favorites"
+                options={{
+                    title:"Favorites"
+                }}
+            />
         </Tabs>
     );
 }

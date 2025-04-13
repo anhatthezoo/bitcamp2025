@@ -10,7 +10,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
     const [fontsLoaded, fontsError] = useFonts({
-        'DM-Serif': require('../assets/fonts/DMSerifDisplay-Regular.ttf')
+        'DM-Serif': require('../assets/fonts/DMSerifDisplay-Regular.ttf'),
+        'Manrope': require('../assets/fonts/Manrope-Variable.ttf')
     })
 
     const [theme, setTheme] = useState<Theme>(LightTheme);

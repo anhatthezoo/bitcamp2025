@@ -2,8 +2,8 @@ import { Recipe, Parser, getImageURL } from '@cooklang/cooklang-ts';
 import { database } from '../firebase.ts'
 import { get } from 'firebase/database'
 
-const cooklangFile = ref(database, FILE_PATH);
-onValue(cooklangFile, ())
+// const cooklangFile = ref(database, FILE_PATH);
+// onValue(cooklangFile, ())
 
 /*
 function parsingCook({query}){

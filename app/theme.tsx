@@ -22,7 +22,7 @@ type ThemeContextType = {
 
 export const LightTheme: Theme = {
     colors: {
-        background: "#fff",
+        background: "#FFFDF2",
         foreground: "#000"
     },
     horizontalInset: 16
