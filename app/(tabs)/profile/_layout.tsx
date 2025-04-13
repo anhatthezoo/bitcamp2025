@@ -6,7 +6,7 @@ export default function HomeLayout() {
             <Stack.Screen
                 name="index"
                 options={{
-                    title: "Favorites",
+                    title: "Profile",
                     headerLargeTitle: true,
                     headerLargeTitleStyle: { fontFamily: "DM-Serif" },
                     headerTitleStyle: { fontFamily: "DM-Serif" },
