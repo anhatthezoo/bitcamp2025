@@ -93,8 +93,8 @@ export default function Home() {
                         </View>
                         <View style={{ flexDirection: "row", gap: 8 }}>
                             <RecipeBox
-                                imagePath="https://s.lightorangebean.com/media/20240914160809/Spicy-Penne-Pasta_-done.png"
-                                textRecipe="Italian"
+                                imagePath="https://www.sanjanafeasts.co.uk/wp-content/uploads/2018/05/Creamy-Restaurant-Style-Matar-Paneer-1.jpg"
+                                textRecipe="Indian"
                                 optHeight={188}
                                 optWidth={188}
                                 tagString1="rga(0,0,0,0)"
@@ -102,8 +102,8 @@ export default function Home() {
                             />
 
                             <RecipeBox
-                                imagePath="https://www.allincrete.com/wp-content/uploads/2019/12/two-lamb-gyros-with-feta-cheese-tzatziki-sauce-allincrete.com_.jpg"
-                                textRecipe="Greek"
+                                imagePath="https://images-ext-1.discordapp.net/external/y5-4SQ1DXRUcV5hLSponxAN78xKt4tkHWrpxec_2jiQ/https/www.thefoodinmybeard.com/content/taco/whitepeople/wpt10.jpg?format=webp&width=1229&height=819"
+                                textRecipe="Mexican"
                                 optHeight={188}
                                 optWidth={188}
                                 tagString1="rga(0,0,0,0)"

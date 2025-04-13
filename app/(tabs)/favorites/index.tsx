@@ -24,14 +24,14 @@ export default function Tab() {
                     </Text>
                     <View style={{flexDirection: "row", gap: 8}}>
                                             
-                        <FolderLayout/>
-                        <FolderLayout/>
+                        <FolderLayout collectionName="Favorite Desserts"/>
+                        <FolderLayout collectionName="Saved for mom"/>
 
                         
                     </View>
                     <View style={{flexDirection: "row", gap: 8}}>
-                        <FolderLayout/>
-                        <FolderLayout/>
+                        <FolderLayout collectionName="Birthday Gifts"/>
+                        <FolderLayout collectionName="Game day snack"/>
                     </View>
                 </View>
 
