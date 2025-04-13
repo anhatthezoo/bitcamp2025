@@ -35,6 +35,7 @@ export default function RecipeScreen() {
     const [cost, setCost] = useState<number>(0);
     const [difficulty, setDifficulty] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
+    const [recipeSteps, setRecipeSteps] = useState<string[]>([]);
     const [cooklang, setCooklang] = useState<string>("");
 
     const formatTime = (hours: number): string => {
@@ -48,6 +49,14 @@ export default function RecipeScreen() {
         } else {
             return `${minutes}m`; // Only minutes
         }
+    };
+
+    const cleanUpStep = (step: string): string => {
+        return step
+            .replace(/\{.*?\}/g, "")
+            .replace(/@/g, "")
+            .replace(/#/g, "")
+            .trim();
     };
 
     useEffect(() => {
@@ -98,6 +107,8 @@ export default function RecipeScreen() {
                 );
                 let cooklangFile = "";
 
+                let hasCooklang = false;
+
                 for (const versionId of versions) {
                     const versionDocs = await getDocs(
                         query(recipeVersionsRef, where("id", "==", versionId))
@@ -106,26 +117,38 @@ export default function RecipeScreen() {
                         if (doc.data().modifiedBy) {
                             contributersIdSet.add(doc.data().modifiedBy);
 
-                            if (cooklang === "") {
-                                cooklangFile = doc.data().cooklang.replace(/\\n/g, "\n").replace(/\n\s*\n/g, "\n\n")
+                            if (hasCooklang === false) {
+                                cooklangFile = doc
+                                    .data()
+                                    .cooklang.replace(/\\n/g, "\n")
+                                    .replace(/\n\s*\n/g, "\n\n");
+                                setCooklang(cooklangFile);
+                                hasCooklang = true;
                             }
                         }
                     });
                 }
 
-                const source = `
->> source: https://www.dinneratthezoo.com/wprm_print/6796
->> total time: 6 minutes
->> servings: 2
+                console.log(cooklangFile);
 
-Place the @apple juice{1,5%cups}, @banana{one sliced}, @frozen mixed berries{1,5%cups} and @vanilla greek yogurt{3/4%cup} in a #blender{}; blend until smooth. If the smoothie seems too thick, add a little more liquid (1/4 cup).
+                let steps: string[] = [];
+                let parsedRecipe = parsingCook(cooklangFile).steps;
+                parsedRecipe.forEach((e) => {
+                    let split = String(e[0]["value"]).split("  ");
+                    split.forEach((s) => {
+                        steps.push(s);
+                    });
+                });
 
-Taste and add @honey{} if desired. Pour into two glasses and garnish with fresh berries and mint sprigs if desired.
-`;
+                steps = steps.map((s) => {
+                    return cleanUpStep(s);
+                });
 
-                console.log(cooklangFile)
-                setCooklang(cooklangFile);
-                console.log(parsingCook(source).steps);
+                steps = steps.filter((step) => step.trim() !== "");
+
+                console.log(steps);
+
+                setRecipeSteps(steps);
 
                 const usersRef = collection(firestore, "users");
                 let contributorsArray: string[] = [];
@@ -153,8 +176,15 @@ Taste and add @honey{} if desired. Pour into two glasses and garnish with fresh 
                     title: "",
                     headerTransparent: true,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.back()}>
-                            <ChevronLeft size={28} />
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: "white",
+                                borderRadius: 360,
+                                padding: 8,
+                            }}
+                            onPress={() => router.back()}
+                        >
+                            <ChevronLeft size={28} color="#BC6C25" />
                         </TouchableOpacity>
                     ),
                 }}
@@ -286,6 +316,69 @@ Taste and add @honey{} if desired. Pour into two glasses and garnish with fresh 
                                 </View>
                             ))}
                         </View>
+
+                        <View style={{ flexDirection: "row", gap: 4 }}>
+                            <TouchableOpacity
+                                style={{ flex: 1 }}
+                                onPress={() =>
+                                    router.push({
+                                        pathname: "/recipes/edit",
+                                        params: {
+                                            name: params.get("name"),
+                                            cooklang: cooklang,
+                                        },
+                                    })
+                                }
+                            >
+                                <View
+                                    style={{
+                                        borderRadius: 8,
+                                        overflow: "hidden",
+                                        paddingHorizontal: 16,
+                                        paddingVertical: 8,
+                                        backgroundColor: "#BC6C25",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            color: "white",
+                                            fontFamily: "Manrope",
+                                            fontSize: 14,
+                                            lineHeight: 20,
+                                            fontWeight: 600,
+                                        }}
+                                    >
+                                        Edit
+                                    </Text>
+                                </View>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{ flex: 1 }}>
+                                <View
+                                    style={{
+                                        borderRadius: 8,
+                                        overflow: "hidden",
+                                        paddingHorizontal: 16,
+                                        paddingVertical: 8,
+                                        backgroundColor: "#BC6C25",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            color: "white",
+                                            fontFamily: "Manrope",
+                                            fontSize: 14,
+                                            lineHeight: 20,
+                                            fontWeight: 600,
+                                        }}
+                                    >
+                                        Add to Favorites
+                                    </Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
 
@@ -330,7 +423,40 @@ Taste and add @honey{} if desired. Pour into two glasses and garnish with fresh 
                             </View>
                         </TouchableOpacity>
                     </View>
-                    
+                </View>
+                <View style={{ paddingHorizontal: 16, paddingVertical: 16 }}>
+                    <Text
+                        style={{
+                            fontFamily: "DM-Serif",
+                            fontSize: 24,
+                            lineHeight: 32,
+                        }}
+                    >
+                        Steps
+                    </Text>
+                    <View>
+                        {recipeSteps.map((step, i) => (
+                            <View
+                                style={{
+                                    borderColor: "rgba(0, 0, 0, 0.2)",
+                                    borderBottomWidth: 1,
+                                    paddingHorizontal: 8,
+                                    paddingVertical: 16,
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        fontFamily: "Manrope",
+                                        fontSize: 14,
+                                        lineHeight: 20,
+                                    }}
+                                    id={`${step}${Date.now()}`}
+                                >
+                                    {i + 1}. {step}
+                                </Text>
+                            </View>
+                        ))}
+                    </View>
                 </View>
             </Animated.ScrollView>
         </View>
