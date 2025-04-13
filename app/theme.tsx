@@ -31,7 +31,7 @@ export const LightTheme: Theme = {
 export const DarkTheme: Theme = {
     colors: {
         background: "#000",
-        foreground: "#fff"
+        foreground: "#FFFDF2"
     },
     horizontalInset: 16
 }

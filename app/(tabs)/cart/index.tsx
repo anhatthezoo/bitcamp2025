@@ -4,24 +4,28 @@ import Checkbox from 'expo-checkbox';
 
 export default function Home() {
     return (
-        <ScrollView contentInsetAdjustmentBehavior={"automatic"}>
+        
+        <ScrollView style={{ backgroundColor: 'white' }}
+            contentInsetAdjustmentBehavior={"automatic"}
+            stickyHeaderIndices={[0]}>
+
             <View style={styles.categoryTitleAndItems}>
                 <Text style={styles.titleText}>Spices</Text>
                 <View style={styles.boughtItems}>
                     <CartItems imagePath="https://store.eatthekiwi.com/cdn/shop/files/NZBroccoli.png?v=1725856716"
-                    itemName="Brocolli"
-                    storeName="Harris Teeter"
-                    priceNumber={3}
+                        itemName="Brocolli"
+                        storeName="Harris Teeter"
+                        priceNumber={3}
                     />
                     <CartItems imagePath="https://store.eatthekiwi.com/cdn/shop/files/NZBroccoli.png?v=1725856716"
-                    itemName="Brocolli"
-                    storeName="Harris Teeter"
-                    priceNumber={3}
+                        itemName="Brocolli"
+                        storeName="Harris Teeter"
+                        priceNumber={3}
                     />
                     <CartItems imagePath="https://store.eatthekiwi.com/cdn/shop/files/NZBroccoli.png?v=1725856716"
-                    itemName="Brocolli"
-                    storeName="Harris Teeter"
-                    priceNumber={3}
+                        itemName="Brocolli"
+                        storeName="Harris Teeter"
+                        priceNumber={3}
                     />
                 </View>
             </View>
@@ -34,10 +38,10 @@ const styles = StyleSheet.create({
     categoryTitleAndItems: {
         flex: 1,
         width: 402,
-        paddingRight:16,
-        paddingLeft:16,
-        paddingTop:4,
-        paddingBottom:8,
+        paddingRight: 16,
+        paddingLeft: 16,
+        paddingTop: 4,
+        paddingBottom: 8,
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: 4,

@@ -1,7 +1,7 @@
 import { View, ImageBackground, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Tag from "../components/Tags";
-import CircleTag from "../components/TagsCircle";
+import Tag from "./Tags";
+import CircleTag from "./TagsCircle";
 
 type RecipeBoxProps = {
     imagePath: string;

@@ -10,6 +10,7 @@ export default function HomeLayout() {
                     headerLargeTitle: true,
                     headerLargeTitleStyle: { fontFamily: "DM-Serif" },
                     headerTitleStyle: { fontFamily: "DM-Serif" },
+                    headerShadowVisible: false,
                 }}
             />
         </Stack>

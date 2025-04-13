@@ -3,7 +3,7 @@ import { House, Star, ShoppingCart, UserRound } from "lucide-react-native"
 
 export default function TabLayout() {
     return (
-        <Tabs screenOptions={{ tabBarActiveTintColor: "#BC6C25", headerShown: false }}>
+        <Tabs screenOptions={{ tabBarActiveTintColor: "#BC6C25", headerShown: false, tabBarStyle: {backgroundColor: "#FFFBDF"} }}>
             <Tabs.Screen
                 name="index"
                 options={{

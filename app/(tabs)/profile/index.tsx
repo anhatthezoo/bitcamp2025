@@ -3,7 +3,9 @@ import { ScrollView } from "react-native";
 
 export default function Home() {
     return (
-        <ScrollView contentInsetAdjustmentBehavior={"automatic"}>
+        <ScrollView style={{ backgroundColor: 'white' }}
+            contentInsetAdjustmentBehavior={"automatic"}
+            stickyHeaderIndices={[0]}>
             <View>
                 <Text>cart</Text>
             </View>
