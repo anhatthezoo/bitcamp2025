@@ -57,9 +57,9 @@ export default function Home() {
                 <View
                     style={{
                         paddingHorizontal: theme.horizontalInset,
-                        paddingVertical: 16,
+                        paddingVertical: 20,
                     }}
-                >
+                >   
                     <Text
                         style={{
                             fontFamily: "DM-Serif",

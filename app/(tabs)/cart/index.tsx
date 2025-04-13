@@ -83,7 +83,7 @@ export default function Home() {
                         storeName="Whole Foods"
                         priceNumber={2.67}
                     />
-                    <CartItems imagePath="https://manischewitz.com/wp-content/uploads/2014/09/medium-egg-noodles-1024x591.png"
+                    <CartItems imagePath="https://www.missionfoods.com/wp-content/uploads/2022/07/product-soft-taco-flour-tortillas-front.png"
                         itemName="Tortilla"
                         storeName="Giant"
                         priceNumber={2.57}
