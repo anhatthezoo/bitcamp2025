@@ -45,17 +45,17 @@ export default function Tab() {
                             recipeName="Dumplings"
                             author="Andrea Shulman"
                         />
-                        <ListLayout imagePath="https://media.cnn.com/api/v1/images/stellar/prod/220926135112-01-body-chinese-foods-ziao-long-bao.jpg?q=w_1110,c_fill"
-                            recipeName="Dumplings"
-                            author="Andrea Shulman"
+                        <ListLayout imagePath="https://www.emborg.com/app/uploads/2023/07/1200x1200px_Easy_Cheese_Omelette.png"
+                            recipeName="Omelets"
+                            author="Olivia Newman"
                         />
-                        <ListLayout imagePath="https://media.cnn.com/api/v1/images/stellar/prod/220926135112-01-body-chinese-foods-ziao-long-bao.jpg?q=w_1110,c_fill"
-                            recipeName="Dumplings"
-                            author="Andrea Shulman"
+                        <ListLayout imagePath="https://www.allrecipes.com/thmb/q-IfK20zxeyp1DgKWhrVp6CQ43w=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AR-89268-triple-dipped-fried-chicken-beauty-4x3-3961ac838ddd41958e7cb9f49376cd68.jpg"
+                            recipeName="Fried Chicken"
+                            author="Wayne Parker"
                         />
-                        <ListLayout imagePath="https://media.cnn.com/api/v1/images/stellar/prod/220926135112-01-body-chinese-foods-ziao-long-bao.jpg?q=w_1110,c_fill"
+                        <ListLayout imagePath="https://www.skinnytaste.com/wp-content/uploads/2011/07/Pineapple-Shrimp-Fried-Rice-10.jpg"
                             recipeName="Dumplings"
-                            author="Andrea Shulman"
+                            author="Drake Shell"
                         />
                     </View>
                 </View>
