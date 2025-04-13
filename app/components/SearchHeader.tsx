@@ -2,6 +2,7 @@ import { ThemeContext } from "@/app/theme";
 import { useContext, useState } from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { Search, X } from "lucide-react-native";
+import { ScrollView } from "react-native";
 
 export default function SearchHeader() {
     const theme = useContext(ThemeContext).theme;
@@ -31,11 +32,19 @@ export default function SearchHeader() {
                     placeholderTextColor="rgba(0, 0, 0, 0.35)"
                 />
             </View>
-
+            
+            
             <View style={{ flexDirection: "row", gap: 8 }}>
-                <Tag name="Filter 1" />
-                <Tag name="Filter 2" />
-                <Tag name="Filter 3" />
+                <ScrollView horizontal={true}
+                    contentContainerStyle={{ columnGap: 8 }}
+                    showsHorizontalScrollIndicator={false}>
+                    <Tag name="Vegetarian" />
+                    <Tag name="Vegan" />
+                    <Tag name="Nut Free" />
+                    <Tag name="Gluten Free" />
+                    <Tag name="Halal" />
+                    <Tag name="Kosher" />
+                </ScrollView>
             </View>
         </View>
     );
