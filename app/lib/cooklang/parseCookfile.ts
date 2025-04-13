@@ -10,6 +10,8 @@ export function parsingCook(query){
    const shoppingList = parserRes.shoppingList;
    const steps = parserRes.steps;
 
+   //
+
    return {
       cookware: cookware,
       ingredients: ingredients,
@@ -18,5 +20,8 @@ export function parsingCook(query){
       steps: steps
    }
 }
+
+
+
 
 
