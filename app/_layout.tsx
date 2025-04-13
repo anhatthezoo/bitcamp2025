@@ -6,6 +6,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import type { Theme, ThemeContextType } from "./theme";
 import { ThemeContext, LightTheme, DarkTheme } from "./theme";
 
+import { app } from "../firebaseConfig"
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
