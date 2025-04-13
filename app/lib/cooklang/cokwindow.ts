@@ -1,9 +1,10 @@
-import { db } from '../firebase.ts';
+import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import { parsingCook } from './parseCookfile';
 
 //get the ID somehow idfk tAT
 
-function pageLoad() {
+async function pageLoad() {
    const docRef = doc(db, "recipeVersions", ID);
    const docSnap = await getDoc(docRef);
 
