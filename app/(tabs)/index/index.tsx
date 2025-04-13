@@ -1,15 +1,16 @@
 import { ThemeContext } from "@/app/theme";
 import { useContext } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, ImageBackground, TextInput } from "react-native";
 import { ScrollView } from "react-native";
 import SearchHeader from "@/app/components/SearchHeader";
 import RecipeBox from "@/app/components/RecipeBox";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home() {
     const theme = useContext(ThemeContext).theme;
     return (
         <ScrollView
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: 'white' }}
             contentInsetAdjustmentBehavior={"automatic"}
             stickyHeaderIndices={[0]}
         >
@@ -29,21 +30,30 @@ export default function Home() {
                     <ScrollView
                         horizontal={true}
                         contentContainerStyle={{ columnGap: 8 }}
+                        showsHorizontalScrollIndicator={false}
                     >
                         <RecipeListLargeItem
                             id=""
-                            name="Recipe name"
-                            author="John Doe"
+                            name="Curried Tilapia"
+                            author="Johnathon Smith"
                             iconUri=""
-                            imageUri=""
+                            imageUri="https://img.hellofresh.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/lp/meals/Pescatarian-meal-ginger-turmeric-tilapia-082019.jpg"
                         />
 
                         <RecipeListLargeItem
                             id=""
-                            name="Recipe name"
-                            author="John Doe"
+                            name="Baked Artichoke Pasta"
+                            author="Jane Garcia"
                             iconUri=""
-                            imageUri=""
+                            imageUri="https://cdn.centr.com/content/15000/14138/images/landscapewidedesktop3x-smoky-tomato-chicken--pasta-tray-bake-16.9.jpg"
+                        />
+
+                        <RecipeListLargeItem
+                            id=""
+                            name="Lemon Dressing Salad"
+                            author="Liam Oliver"
+                            iconUri=""
+                            imageUri="https://www.healthifyme.com/blog/wp-content/uploads/2021/10/All-About-The-Right-Food-Plate-Method.jpg"
                         />
                     </ScrollView>
                 </View>
@@ -61,8 +71,8 @@ export default function Home() {
                         Discover
                     </Text>
 
-                    <View style={{ gap: 8 }}>
-                        <View style={{flexDirection: "row", gap: 8}}>
+                    <View style={{ gap: 8, width: '100%' }}>
+                        <View style={{ flexDirection: "row", gap: 8, width: '100%' }}>
                             <RecipeBox
                                 imagePath="https://s.lightorangebean.com/media/20240914160809/Spicy-Penne-Pasta_-done.png"
                                 textRecipe="Italian"
@@ -81,7 +91,7 @@ export default function Home() {
                                 tagString2="rga(0,0,0,0)"
                             />
                         </View>
-                        <View style={{flexDirection: "row", gap: 8}}>
+                        <View style={{ flexDirection: "row", gap: 8 }}>
                             <RecipeBox
                                 imagePath="https://s.lightorangebean.com/media/20240914160809/Spicy-Penne-Pasta_-done.png"
                                 textRecipe="Italian"
@@ -123,53 +133,75 @@ function RecipeListLargeItem({
     imageUri,
 }: RecipeListLargeItemProps) {
     return (
-        <View
+        <ImageBackground
+            source={{ uri: imageUri }} // Path to your image
             style={{
                 width: 290,
                 height: 120,
                 borderRadius: 8,
-                padding: 8,
-                backgroundColor: "red",
-                justifyContent: "flex-end",
-                flex: 1,
-                flexDirection: "column",
+                overflow: "hidden",
             }}
+            resizeMode="cover" // or 'stretch', 'contain', etc.
         >
-            <View
-                style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                }}
+            <LinearGradient
+                colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.85)"]}
+                style={{flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",}}
+                start={{ x: 0, y: 0.5 }}
+                end={{ x: 0, y: 1 }}
             >
-                <View>
-                    <Text
-                        style={{
-                            fontFamily: "Manrope",
-                            color: "white",
-                        }}
-                    >
-                        {name}
-                    </Text>
-                    <Text
-                        style={{
-                            fontFamily: "Manrope",
-                            color: "white",
-                            fontWeight: 700,
-                        }}
-                    >
-                        {author}
-                    </Text>
-                </View>
-
                 <View
                     style={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: 360,
-                        backgroundColor: "gray",
+                        width: 290,
+                        height: 120,
+                        borderRadius: 8,
+                        padding: 8,
+                        backgroundColor: "transparent",
+                        justifyContent: "flex-end",
+                        flex: 1,
+                        flexDirection: "column",
                     }}
-                ></View>
-            </View>
-        </View>
+                >
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <View>
+                            <Text
+                                style={{
+                                    fontFamily: "Manrope",
+                                    color: "white",
+                                }}
+                            >
+                                {name}
+                            </Text>
+                            <Text
+                                style={{
+                                    fontFamily: "Manrope",
+                                    color: "white",
+                                    fontWeight: 700,
+                                }}
+                            >
+                                {author}
+                            </Text>
+                        </View>
+
+                        <View
+                            style={{
+                                width: 40,
+                                height: 40,
+                                borderRadius: 360,
+                                backgroundColor: "gray",
+                            }}
+                        ></View>
+                    </View>
+                </View>
+
+            </LinearGradient>
+        </ImageBackground>
+
     );
 }
