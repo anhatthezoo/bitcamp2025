@@ -99,7 +99,7 @@ export default function Home() {
                 </View>
                 <View style={styles.boughtItems}>
                     <CartItems
-                        imagePath="https://panamarbakery.com/public/Image/2021/3/161547156013789normal.png"
+                        imagePath="https://panamarbakery.com/public/Image/2025/8/13789_Galeria.png"
                         itemName="Bread"
                         storeName="Harris Teeter"
                         priceNumber={3.59}
@@ -124,25 +124,13 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     categoryTitleAndItems: {
-        flex: 1,
+        display: "flex",
         width: 402,
         paddingRight: 16,
         paddingLeft: 16,
         paddingTop: 4,
         paddingBottom: 8,
         flexDirection: "column",
-        alignItems: "flex-start",
-        gap: 16,
-    },
-
-    wfowijfew: {
-        flex: 1,
-        width: "100%",
-        paddingRight: 16,
-        paddingLeft: 16,
-        paddingTop: 4,
-        paddingBottom: 8,
-        flexDirection: "row",
         alignItems: "flex-start",
         gap: 16,
     },
@@ -157,10 +145,11 @@ const styles = StyleSheet.create({
     },
 
     boughtItems: {
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "flex-start",
+        display: "flex",
+        flexDirection: 'column',
         gap: 8,
+        height: "auto",
+        flexGrow: 1,
 
         borderRadius: 15,
         backgroundColor: "#FFF1DC",
